@@ -3,373 +3,1233 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seu Nome - Web Designer</title> <!-- SEU TÍTULO AQUI -->
+    <!-- ***** MUDE ISSO: Atualize a descrição para o seu portfólio ***** -->
+    <meta name="description" content="Portfólio de [Seu Nome], Web Designer especialista em criar lindas experiências digitais.">
+    <!-- ***** MUDE ISSO: Atualize o título para o seu portfólio ***** -->
+    <title>[Seu Nome] - Portfólio de Web Designer</title>
+
+    <!-- ***** MUDE ISSO (Opcional): Atualize ou remova o favicon ***** -->
+    <link href="https://framerusercontent.com/images/mdKMhH3CBl8XJuPrdQVbPmm9IiA.png" rel="icon">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Satoshi:ital,wght@0,500;0,700;1,500;1,700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome para Ícones (ou use SVGs) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Estilos Embutidos -->
     <style>
-        /* === Reset Básico & Variáveis === */
+        /* --- Variáveis CSS (Root) --- */
         :root {
-            --bg-color: #0a0a0a;
-            --card-bg-color: #1a1a1a;
-            --text-color: #f0f0f0;
-            --text-muted-color: #a0a0a0;
-            --accent-color: #ffffff;
-            --primary-font: 'Inter', sans-serif; /* Lembre-se de importar a fonte se quiser usar uma específica */
-            --border-radius: 16px;
-            --container-width: 1100px;
+            --color-background: #0a0a0a;
+            --color-card-bg: #121212;
+            --color-primary: #e93f0c; /* Cor Primária Exemplo - MUDE ISSO se desejar */
+            --color-text-primary: #f5f5f8;
+            --color-text-secondary: #ababab;
+            --color-text-muted: #999999;
+            --color-border: rgba(255, 255, 255, 0.1);
+            --color-border-input: rgba(255, 255, 255, 0.08);
+            --color-border-input-focus: rgba(255, 255, 255, 0.2);
+            --color-input-bg: #141414;
+            --color-badge-bg: rgba(255, 255, 255, 0.05);
+            --color-button-secondary-bg: rgba(13, 13, 13, 0.5);
+            --color-shadow-light: rgba(0, 0, 0, 0.1);
+            --color-shadow-medium: rgba(0, 0, 0, 0.1);
+
+            --font-primary: 'Satoshi', sans-serif;
+            --font-secondary: 'Inter', sans-serif;
+            --font-serif: 'Instrument Serif', serif;
+
+            --border-radius-card: 48px;
+            --border-radius-card-mobile: 32px;
+            --border-radius-badge: 999px;
+            --border-radius-button: 10px;
+            --border-radius-input: 12px;
+            --border-radius-small: 12px; /* Para ícones sociais etc */
+
+            --container-width: 1200px;
+            --container-padding: 64px;
+            --container-padding-mobile: 24px;
+            --gap-large: 64px;
+            --gap-medium: 32px;
+            --gap-small: 24px;
+            --gap-xsmall: 16px;
+
+            /* Transições */
+            --transition-fast: all 0.2s ease-out;
+            --transition-medium: all 0.4s ease-out;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { background-color: var(--bg-color); color: var(--text-color); font-family: var(--primary-font); line-height: 1.6; overflow-x: hidden; }
-
-        /* === Tipografia === */
-        h1, h2, h3 { line-height: 1.2; margin-bottom: 1rem; }
-        h1 { font-size: 3.5rem; font-weight: 700; }
-        h2 { font-size: 2.8rem; font-weight: 600; }
-        h3 { font-size: 1.5rem; font-weight: 500; }
-        p { margin-bottom: 1rem; color: var(--text-muted-color); font-size: 1.1rem; }
-        a { color: var(--accent-color); text-decoration: none; transition: opacity 0.3s ease; }
-        a:hover { opacity: 0.8; }
-        em { font-style: italic; color: var(--text-color); }
-
-        /* === Layout & Containers === */
-        .container { max-width: var(--container-width); margin: 0 auto; padding: 0 20px; }
-        section { padding: 60px 0; }
-        .card { background-color: var(--card-bg-color); border-radius: var(--border-radius); padding: 40px; display: flex; gap: 40px; align-items: center; margin-bottom: 60px; }
-        .card-content { flex: 1; }
-        .card-image {
-            flex-shrink: 0; width: 250px; height: 250px;
-            display: flex; align-items: center; justify-content: center;
-            background-color: #111; /* Fundo escuro sólido para partículas */
-            border-radius: var(--border-radius);
-            position: relative; overflow: hidden; /* Mantém overflow hidden */
-            animation: float 6s ease-in-out infinite;
-        }
-        /* Garante que a imagem principal fique na frente das estrelas e partículas */
-        .card-image img {
-            max-width: 100%; max-height: 100%;
-            object-fit: contain; position: relative; z-index: 1; /* z-index: 1 = TOPO */
+        /* --- Reset & Estilos Base --- */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
-        /* === Botões & Links === */
-        .button { display: inline-block; background-color: var(--accent-color); color: var(--bg-color); padding: 12px 24px; border-radius: 8px; font-weight: 500; transition: transform 0.3s ease, background-color 0.3s ease; border: none; cursor: pointer; }
-        .button:hover { transform: scale(1.05); opacity: 1; }
-        .button.secondary { background-color: transparent; color: var(--text-color); border: 1px solid var(--text-muted-color); }
-        .button.secondary:hover { background-color: rgba(255, 255, 255, 0.1); border-color: var(--text-color); }
-        .icon-button { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; background-color: #252525; color: var(--text-color); border-radius: 50%; font-size: 1.2rem; transition: background-color 0.3s ease; }
-        .icon-button:hover { background-color: #333; opacity: 1; }
+        html {
+            scroll-behavior: smooth;
+            font-feature-settings: 'liga' 1, 'calt' 1; /* Habilita ligaturas */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
 
-        /* === Seções Estruturais (Hero, Worked With, etc.) === */
-         .hero-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
-        .hero-header img { width: 50px; height: 50px; border-radius: 50%; }
-        .hero-header .info p { margin: 0; line-height: 1.3; }
-        .hero-header .info .name { font-weight: 600; color: var(--text-color); font-size: 1.1rem; }
-         .hero-header .info .title { font-size: 0.9rem; }
-        .hero-actions { display: flex; gap: 10px; align-items: center; }
-         .worked-with { text-align: center; padding: 30px 0; overflow: hidden; position: relative; }
-        .worked-with h3 { font-size: 0.9rem; color: var(--text-muted-color); margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1px; }
-        .logos-container { width: 100%; overflow: hidden; position: relative; }
-        .logos-track { display: flex; width: calc(200px * 12); animation: scroll 40s linear infinite; }
-        .logo-item { width: 200px; flex-shrink: 0; padding: 0 30px; display: flex; align-items: center; justify-content: center; }
-        .logo-item img { max-width: 100px; max-height: 40px; filter: grayscale(1) brightness(3); opacity: 0.7; transition: opacity 0.3s ease, filter 0.3s ease; }
-        .logo-item img:hover { opacity: 1; filter: grayscale(0) brightness(1); }
-        #diferencial .card-image { animation: float 7s ease-in-out infinite 0.5s; }
-        .portfolio-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
-        .project-card { background-color: var(--card-bg-color); border-radius: var(--border-radius); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative; display: block; }
-        .project-card:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); }
-        .project-image { width: 100%; height: 250px; overflow: hidden; background-color: #333; }
-        .project-image img { width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform 0.5s ease; }
-        .project-card:hover .project-image img { transform: scale(1.05); }
-        .project-info { padding: 25px; }
-        .project-info h3 { font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--text-color); }
-        .project-info p { font-size: 0.95rem; margin-bottom: 0; }
-        #ajuda .card-content { display: flex; gap: 40px; align-items: flex-start; }
-         #ajuda .card-image { animation: float 5s ease-in-out infinite 0.2s; }
-        .service-offering { flex: 1; }
-         .service-offering h3 { margin-bottom: 5px; font-size: 1.2rem; display: flex; justify-content: space-between; align-items: baseline; }
-         .service-offering .price { font-size: 0.8rem; font-weight: 400; color: var(--text-muted-color); background-color: rgba(255, 255, 255, 0.1); padding: 2px 8px; border-radius: 4px; }
-         .service-offering p { font-size: 1rem; margin-bottom: 20px; }
-         #ajuda .get-in-touch-section { margin-top: 30px; width: 100%; text-align: left; }
+        body {
+            background-color: var(--color-background);
+            color: var(--color-text-secondary);
+            font-family: var(--font-primary);
+            font-size: 16px; /* Tamanho de fonte base */
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden; /* Previne rolagem horizontal */
+        }
 
-        /* === Rodapé === */
-        footer { padding: 40px 0; text-align: center; color: var(--text-muted-color); font-size: 0.9rem; }
-        .footer-info { margin-bottom: 20px; }
-        .footer-info .footer-title { font-size: 1.5rem; font-weight: 600; color: var(--text-color); margin-bottom: 5px; }
-        .footer-info #local-time { font-size: 1rem; color: var(--text-color); margin-bottom: 5px; }
-        .footer-info .location { font-size: 0.9rem; }
-        .footer-social-links { margin-bottom: 20px; display: flex; justify-content: center; gap: 15px; }
-        .footer-social-links .icon-button { background-color: #1f1f1f; }
-        .footer-social-links .icon-button:hover { background-color: #333; }
-        .footer-credits span { margin: 0 8px; }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
 
-        /* === Animações === */
-        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
-        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-200px * 6)); } }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        a:hover {
+            color: var(--color-text-primary);
+        }
 
-        /* === CSS para Animação de Partículas de Fundo === */
-        .card-image::before,
-        .card-image::after {
-            content: ""; position: absolute; top: 0; left: 0;
-            width: 100%; height: 100%;
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-primary);
+            color: var(--color-text-primary);
+            line-height: 1.2;
+            font-weight: 500;
+            letter-spacing: -0.04em;
+        }
+
+        h1 { font-size: 42px; }
+        h2 { font-size: 42px; }
+        h3 { font-size: 24px; letter-spacing: -0.04em; line-height: 0.9em;}
+        h4 { font-size: 18px; letter-spacing: -0.02em; line-height: 1.1em;}
+        h6 { font-size: 14px; letter-spacing: -0.02em; font-weight: 500;} /* Usado para botões */
+
+        p {
+            margin-bottom: 1em;
+            font-family: var(--font-primary);
+            font-weight: 500;
+            letter-spacing: -0.02em;
+        }
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+        .serif-italic {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-weight: 400;
+            letter-spacing: 0em;
+        }
+
+        /* --- Layout --- */
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 var(--container-padding-mobile); /* Padding móvel inicial */
+            gap: var(--gap-medium);
+            padding-bottom: var(--gap-large);
+        }
+
+        .container {
+            width: 100%;
+            max-width: var(--container-width);
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .container-narrow {
+            width: 100%;
+            max-width: 800px; /* Ou ajuste conforme necessário */
+        }
+
+        /* --- Utilitários --- */
+        .card {
+            background-color: var(--color-card-bg);
+            border-radius: var(--border-radius-card);
+            padding: var(--gap-large);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+        .card-border {
+            position: absolute;
+            inset: 0;
             border-radius: inherit;
-            z-index: -1; /* Atrás de tudo */
-            background: transparent;
-        }
-        /* Camada 1 (::before) - Mais partículas, menores/escuras */
-        .card-image::before {
-            --particle-color-1: rgba(200, 200, 200, 0.35);
-            box-shadow: 10px 50px 0 var(--particle-color-1), 80px 120px 0 var(--particle-color-1), 150px 20px 0 var(--particle-color-1), 200px 180px 0 var(--particle-color-1), 5px 240px 0 var(--particle-color-1), 90px 80px 0 var(--particle-color-1), 180px 100px 0 var(--particle-color-1), 30px 150px 0 var(--particle-color-1), 120px 220px 0 var(--particle-color-1), 210px 60px 0 var(--particle-color-1), 45px 95px 0 var(--particle-color-1), 135px 165px 0 var(--particle-color-1), 195px 5px 0 var(--particle-color-1), 25px 205px 0 var(--particle-color-1), 105px 25px 0 var(--particle-color-1), 175px 145px 0 var(--particle-color-1), 65px 195px 0 var(--particle-color-1), 145px 75px 0 var(--particle-color-1), 225px 125px 0 var(--particle-color-1), 55px 10px 0 var(--particle-color-1);
-            /* Adicione mais linhas aqui com posições X Y variadas entre 0 e 250 */
-            width: 1px; height: 1px;
-            animation: particle-drift-1 120s linear infinite;
-        }
-        /* Camada 2 (::after) - Menos partículas, maiores/claras */
-        .card-image::after {
-             --particle-color-2: rgba(230, 230, 230, 0.55);
-            box-shadow: 20px 80px 0 var(--particle-color-2), 100px 10px 0 var(--particle-color-2), 160px 150px 0 var(--particle-color-2), 50px 200px 0 var(--particle-color-2), 130px 60px 0 var(--particle-color-2), 210px 190px 0 var(--particle-color-2), 75px 135px 0 var(--particle-color-2), 185px 35px 0 var(--particle-color-2), 5px 175px 0 var(--particle-color-2), 115px 95px 0 var(--particle-color-2);
-             /* Adicione mais linhas aqui */
-            width: 2px; height: 2px;
-            animation: particle-drift-2 90s linear infinite;
+            border: 1px solid var(--color-border);
+            pointer-events: none;
+            /* Efeito de máscara do Framer - borda simples geralmente é suficiente */
+            mask: linear-gradient(180deg, #000 0%, rgba(0,0,0,0.16) 83%);
+            -webkit-mask: linear-gradient(180deg, #000 0%, rgba(0,0,0,0.16) 83%);
         }
 
-        /* Animações para o movimento MAIS PRONUNCIADO das partículas */
-        @keyframes particle-drift-1 {
-            from {
-                transform: translate(0, 0);
+        /* --- Botões --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 18px;
+            border: none;
+            border-radius: var(--border-radius-button);
+            font-family: var(--font-primary);
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: -0.02em;
+            line-height: 24px;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            text-align: center;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0px 4px 10px -2px var(--color-shadow-light), 0px 2px 2px -1px var(--color-shadow-medium);
+        }
+        .btn i {
+            font-size: 0.9em;
+            line-height: 1;
+        }
+
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: #fff; /* Ajuste a cor do texto para primário */
+            border: 1px solid rgba(41, 41, 41, 0.12); /* Borda exemplo */
+        }
+        .btn-primary:hover {
+            opacity: 0.9;
+        }
+
+        .btn-secondary {
+            background-color: var(--color-button-secondary-bg);
+            color: var(--color-text-primary);
+            border: 1px solid var(--color-border);
+        }
+        .btn-secondary:hover {
+            background-color: rgba(13, 13, 13, 0.8);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        .btn-small {
+            padding: 9px 13px;
+            font-size: 14px;
+        }
+
+        /* --- Seção Hero --- */
+        .hero-section {
+            padding-top: var(--gap-large); /* Removido do card */
+        }
+        .hero-section .container {
+            padding: 0; /* Padding do container gerenciado pela seção */
+        }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr; /* Ajuste a proporção conforme necessário */
+            gap: var(--gap-small);
+            align-items: stretch; /* Faz os cards terem a mesma altura */
+            margin-bottom: var(--gap-medium);
+        }
+        .hero-card.card-intro {
+            padding: var(--gap-large);
+            display: flex;
+            flex-direction: column;
+            gap: var(--gap-medium);
+        }
+        .hero-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap; /* Permite quebra em telas pequenas */
+            gap: var(--gap-xsmall);
+        }
+        .persona {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .avatar {
+            width: 38px;
+            height: 38px;
+            object-fit: contain;
+            border-radius: 50%; /* Opcional: torna o avatar redondo */
+        }
+        .persona-text .name {
+            font-size: 17px;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            line-height: 1.1em;
+            color: var(--color-text-primary);
+            margin-bottom: 4px;
+        }
+        .persona-text .title {
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            line-height: 1.1em;
+            color: var(--color-text-secondary);
+            margin-bottom: 0;
+        }
+        .socials {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background-color: transparent; /* Ou um fundo sutil */
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius-small);
+            color: var(--color-text-secondary);
+            transition: var(--transition-fast);
+            box-shadow: 0px 4px 10px -2px var(--color-shadow-light), 0px 2px 2px -1px var(--color-shadow-medium);
+        }
+        .social-link:hover {
+            color: var(--color-text-primary);
+            border-color: rgba(255, 255, 255, 0.2);
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        .social-link i {
+            font-size: 16px;
+        }
+
+        .hero-card-body .subtitle {
+            font-size: 20px;
+            color: var(--color-text-secondary);
+            max-width: 90%; /* Replica a largura do texto do Framer */
+        }
+
+        .hero-visual {
+            padding: 0; /* Remove o padding do card para o visual */
+            position: relative; /* Para posicionamento absoluto dentro */
+            min-height: 360px; /* Altura exemplo, ajuste conforme necessário */
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+        .visual-gradient-bg { /* Efeito de canvas simplificado */
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: linear-gradient(180deg, var(--color-card-bg) 0%, rgba(18, 18, 18, 0) 50%),
+                        radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.05) 0%, transparent 60%);
+            opacity: 0.8;
+            z-index: 0;
+        }
+        .hero-visual-image {
+            position: relative; /* Acima do gradiente */
+            z-index: 2;
+            width: 440px; /* Tamanho do Framer */
+            max-width: 120%;
+            margin-bottom: -5px; /* Ajusta sobreposição */
+            mask: linear-gradient(180deg, #000 60%, transparent 100%);
+            -webkit-mask: linear-gradient(180deg, #000 60%, transparent 100%);
+        }
+        /* Estrelas Cadentes Simplificadas */
+        .shooting-stars {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 100px; /* Comprimento do rastro */
+            background: linear-gradient(-45deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0));
+            border-radius: 1px;
+            filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.6));
+            animation: shoot 3s linear infinite;
+        }
+        .star:nth-child(1) { top: 0; right: 0; animation-delay: 0s; animation-duration: 3s; }
+        .star:nth-child(2) { top: 80px; right: -50px; animation-delay: 1s; animation-duration: 2.5s;}
+        .star:nth-child(3) { top: 10px; right: -100px; animation-delay: 2.5s; animation-duration: 3.5s;}
+
+        @keyframes shoot {
+            0% { transform: translateX(0) translateY(0) rotate(45deg); opacity: 1; }
+            80% { opacity: 1; }
+            100% { transform: translateX(-300px) translateY(300px) rotate(45deg); opacity: 0; }
+        }
+
+        /* --- Logo Ticker --- */
+        .logo-ticker-wrapper {
+            padding: var(--gap-small) var(--gap-medium); /* Padding menor */
+            text-align: center;
+            margin-top: var(--gap-medium);
+        }
+        .ticker-label {
+            font-size: 12px;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--gap-xsmall);
+        }
+        .logo-ticker {
+            width: 100%;
+            overflow: hidden;
+            mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+        }
+        .ticker-track {
+            display: flex;
+            gap: var(--gap-large);
+            align-items: center;
+            width: fit-content; /* Importante para largura da animação */
+            animation: scroll 30s linear infinite;
+        }
+        .ticker-track img {
+            height: 20px; /* Ajuste a altura do logo */
+            width: auto;
+            opacity: 0.7;
+            flex-shrink: 0;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } /* Rola metade da largura (já que o conteúdo é duplicado) */
+        }
+
+        /* --- Seção Benefícios --- */
+        .benefit-section {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: var(--gap-large);
+        }
+        .benefit-image {
+            width: 270px;
+            flex-shrink: 0;
+            align-self: flex-end;
+            margin-bottom: -5px; /* Sobrepõe levemente */
+            mask: linear-gradient(180deg, #000 60%, transparent 100%);
+            -webkit-mask: linear-gradient(180deg, #000 60%, transparent 100%);
+        }
+        .benefit-content {
+            flex-grow: 1;
+        }
+        .benefit-content .container-narrow {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Alinha texto à esquerda */
+            gap: var(--gap-medium);
+        }
+
+        /* --- Seção Trabalhos (Work) --- */
+        .work-section {
+            padding-top: var(--gap-medium); /* Adiciona espaço acima */
+        }
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--gap-small);
+        }
+        .project-card {
+            aspect-ratio: 1.33 / 1; /* Replica aspect ratio do Framer */
+            padding: 0; /* Remove padding do card */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            position: relative;
+            color: var(--color-text-primary);
+            border-radius: var(--border-radius-card);
+        }
+        .project-image {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            border-radius: inherit;
+            z-index: 0;
+            mask: linear-gradient(180deg, #000 50%, transparent 90%);
+            -webkit-mask: linear-gradient(180deg, #000 50%, transparent 90%);
+            transition: transform 0.4s ease-out; /* Efeito hover */
+        }
+        .project-card:hover .project-image {
+            transform: scale(1.03);
+        }
+
+        .project-info {
+            position: relative;
+            z-index: 2;
+            padding: var(--gap-medium);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .project-title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .project-info h3 { margin-bottom: 0; }
+        .project-info p {
+            font-size: 16px;
+            color: var(--color-text-secondary);
+            margin-bottom: 0;
+            width: 100%;
+        }
+        .arrow-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background-color: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            opacity: 0;
+            transform: scale(0.8);
+            transition: var(--transition-fast);
+        }
+        .project-card:hover .arrow-icon {
+            opacity: 1;
+            transform: scale(1) rotate(0deg); /* Estado padrão */
+        }
+        .arrow-icon i {
+            font-size: 14px;
+            transition: transform 0.2s ease-out;
+        }
+        .project-card:hover .arrow-icon i {
+            transform: rotate(-45deg);
+        }
+
+        /* --- Seção Serviços --- */
+        .services-section {
+            display: flex;
+            flex-direction: row-reverse; /* Imagem à direita */
+            align-items: center;
+            gap: var(--gap-large);
+        }
+        .services-image {
+            width: 270px;
+            flex-shrink: 0;
+            align-self: flex-end;
+            margin-bottom: -5px; /* Sobrepõe levemente */
+             mask: linear-gradient(180deg, #000 60%, transparent 100%);
+            -webkit-mask: linear-gradient(180deg, #000 60%, transparent 100%);
+        }
+        .services-content {
+            flex-grow: 1;
+        }
+        .services-content .container-narrow {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Alinha texto à esquerda */
+            gap: var(--gap-medium);
+        }
+        .service-items {
+            display: flex;
+            flex-direction: column; /* Empilha itens verticalmente */
+            gap: var(--gap-small);
+            width: 100%;
+        }
+        .service-item {
+            display: flex;
+            flex-direction: column;
+            gap: var(--gap-xsmall);
+        }
+        .service-item-header {
+            display: flex;
+            align-items: baseline; /* Alinha texto e badge */
+            gap: 10px;
+            flex-wrap: wrap; /* Permite quebra */
+        }
+        .service-item h4 { margin-bottom: 0; }
+        .service-item p {
+            font-size: 16px;
+            color: var(--color-text-secondary);
+            margin-bottom: 0;
+        }
+        .badge {
+            display: inline-block;
+            background-color: var(--color-badge-bg);
+            border: 1px solid var(--color-border);
+            color: var(--color-text-primary);
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            padding: 4px 8px;
+            border-radius: var(--border-radius-badge);
+            line-height: 1;
+            white-space: nowrap;
+        }
+
+        /* --- Rodapé --- */
+        .footer-section {
+            padding-top: var(--gap-medium);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--gap-medium);
+            text-align: center;
+        }
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--gap-xsmall);
+        }
+        .footer-logo {
+            font-family: var(--font-serif);
+            font-size: 36px;
+            letter-spacing: -0.02em;
+            line-height: 0.9em;
+            color: rgba(245, 245, 247, 0.7);
+        }
+        .footer-logo .logo-highlight {
+            color: var(--color-text-primary);
+        }
+        .footer-time {
+            margin-top: 8px;
+        }
+        #local-time {
+            font-family: var(--font-primary);
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            line-height: 1em;
+            color: var(--color-text-primary);
+        }
+        .time-zone {
+            font-family: var(--font-primary);
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            line-height: 1.4em;
+            color: var(--color-text-secondary);
+            margin-top: 4px;
+            margin-bottom: 0;
+        }
+        .footer-section .socials {
+            margin-top: 8px;
+        }
+        .footer-credits {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            font-family: var(--font-primary);
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: var(--color-text-secondary);
+        }
+        .footer-credits p {
+            margin-bottom: 0;
+        }
+        .footer-credits a {
+            color: var(--color-text-primary);
+            text-decoration: none;
+        }
+        .footer-credits a:hover {
+            text-decoration: underline;
+            color: var(--color-text-secondary);
+        }
+        .footer-credits span { /* Mantém os pontos se gostar */
+            color: var(--color-text-muted);
+        }
+
+        /* --- Botão Flutuante (FAB) - Removido */
+        /* .fab { ... } */
+
+        /* --- Modal --- */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .modal-overlay.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-content {
+            position: relative;
+            padding: var(--gap-large);
+            border-radius: var(--border-radius-card);
+            max-width: 750px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            text-align: center;
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+        .modal-overlay.visible .modal-content {
+            transform: scale(1);
+        }
+        .modal-image {
+            width: 117px;
+            height: auto;
+            margin: 0 auto var(--gap-medium) auto;
+        }
+        .modal-content h2 {
+            margin-bottom: var(--gap-xsmall);
+        }
+        .modal-content p {
+            color: var(--color-text-secondary);
+            margin-bottom: var(--gap-medium);
+        }
+        .modal-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            background: none;
+            border: none;
+            font-size: 28px;
+            line-height: 1;
+            color: var(--color-text-secondary);
+            cursor: pointer;
+            padding: 5px;
+            transition: var(--transition-fast);
+        }
+        .modal-close:hover {
+            color: var(--color-text-primary);
+        }
+
+        /* --- Formulário de Contato --- */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: var(--gap-xsmall);
+            text-align: left;
+        }
+        .form-row {
+            display: flex;
+            gap: var(--gap-xsmall);
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex: 1; /* Para layout em linha */
+        }
+        .form-group label {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--color-text-secondary);
+        }
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group textarea {
+            background-color: var(--color-input-bg);
+            border: 1px solid var(--color-border-input);
+            border-radius: var(--border-radius-input);
+            padding: 12px;
+            font-family: var(--font-primary);
+            font-size: 14px;
+            color: var(--color-text-primary);
+            transition: border-color 0.3s ease;
+        }
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--color-text-muted);
+            opacity: 1;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-border-input-focus);
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .contact-form .btn {
+            margin-top: var(--gap-xsmall);
+            align-self: flex-start;
+        }
+
+        /* --- Animações de Aparecimento --- */
+        .reveal-fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(.215,.61,.355,1), transform 0.8s cubic-bezier(.215,.61,.355,1);
+        }
+        .reveal-image-up {
+            opacity: 0;
+            transform: translateY(240px);
+            transition: opacity 0.8s cubic-bezier(.215,.61,.355,1), transform 0.8s cubic-bezier(.215,.61,.355,1);
+        }
+
+        .is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Media Queries --- */
+
+        /* Tablet */
+        @media (max-width: 1199px) {
+            :root {
+                --container-width: 810px; /* Ajusta largura do container para tablet */
+                --container-padding: 48px;
+                --gap-large: 48px;
+                --gap-medium: 24px;
+                --gap-small: 20px;
             }
-            to {
-                /* Move para cima e para a esquerda uma distância maior */
-                transform: translate(-60px, -80px); /* ALTERADO */
+            h1, h2 { font-size: 36px; }
+            .hero-grid { grid-template-columns: 1fr; } /* Empilha cards hero */
+            .project-grid { grid-template-columns: 1fr; } /* Empilha projetos */
+            .benefit-section, .services-section {
+                flex-direction: column;
+                text-align: center;
             }
-        }
-        @keyframes particle-drift-2 {
-            from {
-                transform: translate(0, 0);
+            .benefit-content .container-narrow,
+            .services-content .container-narrow {
+                align-items: center;
             }
-            to {
-                /* Move para baixo e para a direita uma distância maior */
-                transform: translate(50px, 70px); /* ALTERADO */
+            .benefit-image, .services-image {
+                align-self: center;
+                margin-bottom: 0;
+                max-width: 270px;
             }
+            .services-section { flex-direction: column-reverse; } /* Mantém imagem abaixo do conteúdo */
+            .service-item-header { justify-content: center; }
         }
 
-
-        /* === CSS para Animação de Estrela Cadente (MÚLTIPLAS ESTRELAS COM SEQUÊNCIA) === */
-        .shooting-star {
-            content: ''; position: absolute;
-            width: 2px; height: 80px;
-            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
-            top: -15%; left: -15%;
-            opacity: 0; transform: rotate(-75deg); transform-origin: top center;
-            z-index: 0; /* Acima das partículas (-1), abaixo da img (1) */
-            animation-name: shooting-star-animation;
-            animation-duration: 5s; animation-timing-function: ease-out; animation-iteration-count: infinite;
+        /* Mobile */
+        @media (max-width: 809px) {
+            :root {
+                --border-radius-card: var(--border-radius-card-mobile);
+            }
+            h1, h2 { font-size: 34px; }
+            h3 { font-size: 20px; }
+            p, .subtitle { font-size: 16px; }
+            .main-container { padding: 0 var(--container-padding-mobile); gap: var(--gap-small); }
+            .card { padding: var(--gap-medium) var(--gap-small); } /* Ajusta padding do card */
+            .hero-card.card-intro { padding: var(--gap-medium); }
+            .hero-card-header { flex-direction: column; align-items: flex-start; }
+            .hero-visual { min-height: 280px; }
+            .hero-visual-image { width: 220px; }
+            .logo-ticker-wrapper { padding: var(--gap-small); }
+            .ticker-track { gap: var(--gap-medium); }
+            .benefit-section, .services-section { padding: var(--gap-medium) var(--gap-small); }
+            .project-card { aspect-ratio: 1 / 1.1; } /* Ajusta aspect ratio para mobile */
+            .footer-credits { gap: 4px 8px; }
+            .form-row { flex-direction: column; }
+            .modal-content { padding: var(--gap-medium); }
+            /* .fab { bottom: 15px; right: 15px; } */ /* FAB removido */
         }
-        /* Animação da Estrela Cadente */
-        @keyframes shooting-star-animation {
-            0% { opacity: 0; transform: translate(0, 0) rotate(-75deg); }
-            15%, 70% { opacity: 1; }
-            100% { opacity: 0; transform: translate(150vw, 150vh) rotate(45deg); }
-        }
-        /* --- Delays Diferenciados para criar Sequências --- */
-        .shooting-star:nth-of-type(1) { animation-delay: 0.8s; width: 3px; height: 90px; }
-        .shooting-star:nth-of-type(2) { animation-delay: 1.1s; width: 1px; height: 70px; filter: brightness(0.8); }
-        .shooting-star:nth-of-type(3) { animation-delay: 4.0s; }
-        .shooting-star:nth-of-type(4) { animation-delay: 4.2s; width: 2px; height: 60px; filter: brightness(0.9); }
-        /* --- Fim dos Delays --- */
-
-
-        /* === Responsividade === */
-         @media (max-width: 992px) {
-            h1 { font-size: 2.8rem; } h2 { font-size: 2.2rem; }
-            .card { flex-direction: column; text-align: center; }
-            .card-image { width: 200px; height: 200px; margin-bottom: 20px; }
-            #ajuda .card-content { flex-direction: column; align-items: center; }
-            .service-offering { text-align: center; }
-            #ajuda .get-in-touch-section { text-align: center; }
-             @keyframes shooting-star-animation { /* Ajustar distancia mobile */
-                 0% { opacity: 0; transform: translate(0, 0) rotate(-75deg); }
-                 15%, 70% { opacity: 1; }
-                 100% { opacity: 0; transform: translate(180vw, 180vh) rotate(45deg); }
-             }
-             /* Opcional: Reduzir densidade das partículas em mobile */
-             .card-image::before {
-                 box-shadow: 10px 50px 0 var(--particle-color-1), 80px 120px 0 var(--particle-color-1), 150px 20px 0 var(--particle-color-1), 200px 180px 0 var(--particle-color-1), 5px 240px 0 var(--particle-color-1); /* Menos sombras */
-             }
-             .card-image::after {
-                  box-shadow: 20px 80px 0 var(--particle-color-2), 100px 10px 0 var(--particle-color-2), 160px 150px 0 var(--particle-color-2); /* Menos sombras */
-             }
-        }
-        @media (max-width: 768px) {
-            .portfolio-grid { grid-template-columns: 1fr; }
-            .hero-actions { justify-content: center; }
-            .footer-credits { font-size: 0.8rem; }
-            .footer-credits span { display: block; margin: 5px 0; }
-        }
-         @media (max-width: 576px) {
-            h1 { font-size: 2.2rem; } h2 { font-size: 1.8rem; }
-            .card { padding: 25px; }
-            .button { padding: 10px 20px; font-size: 0.9rem; }
-            p { font-size: 1rem;}
-         }
-
     </style>
+
 </head>
 <body>
 
-    <!-- =============== Seção Hero =============== -->
-    <section id="hero">
-        <div class="container">
-            <div class="card">
-                <div class="card-content">
-                    <div class="hero-header">
-                        <img src="https://via.placeholder.com/50" alt="Mika Avatar"> <!-- SEU AVATAR PEQUENO AQUI -->
-                        <div class="info">
-                            <p class="name">Olá, eu sou Mika.</p> <!-- SEU NOME E TÍTULO AQUI -->
-                            <p class="title">Web Designer</p>
+    <div class="main-container">
+
+        <!-- Seção Hero -->
+        <section class="hero-section" id="introduction">
+            <div class="container">
+                <div class="hero-grid">
+                    <div class="hero-card card card-intro reveal-fade-up" data-delay="0.1">
+                        <div class="hero-card-header">
+                            <div class="persona">
+                                <!-- ***** MUDE ISSO: Substitua pelo caminho da sua imagem de avatar ***** -->
+                                <img src="fotogabriel.png" alt="Avatar de [Seu Nome]" class="avatar">
+                                <div class="persona-text">
+                                    <!-- ***** MUDE ISSO: Seu Nome ***** -->
+                                    <p class="name">Olá, sou [Seu Nome].</p>
+                                    <!-- ***** MUDE ISSO: Seu Cargo/Título ***** -->
+                                    <p class="title">Web Designer</p>
+                                </div>
+                            </div>
+                            <div class="socials">
+                                <!-- ***** MUDE ISSO: Atualize seus links de redes sociais ***** -->
+                                <a href="https://twitter.com/seu_perfil" target="_blank" rel="noopener" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                                <a href="https://linkedin.com/in/seu_perfil" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                <!-- Adicione mais links sociais conforme necessário (ex: Behance, Dribbble) -->
+                                <button class="btn btn-secondary btn-small contact-trigger">Entrar em Contato</button>
+                            </div>
+                        </div>
+                        <div class="hero-card-body">
+                            <!-- ***** MUDE ISSO: Atualize sua manchete principal ***** -->
+                            <h1 class="reveal-fade-up" data-delay="0.2">Obcecado por criar experiências digitais <span class="serif-italic">atemporais</span>.</h1>
+                            <!-- ***** MUDE ISSO: Atualize seu parágrafo introdutório ***** -->
+                            <p class="subtitle reveal-fade-up" data-delay="0.3">Bem-vindo ao meu portfólio. Sou especialista na construção de websites bonitos e funcionais que conectam com os usuários e alcançam objetivos de negócio.</p>
                         </div>
                     </div>
-                    <h1>Obcecado por criar experiências digitais <em>atemporais</em> com Framer.</h1> <!-- SEU HEADLINE PRINCIPAL AQUI -->
-                    <p>Olá, eu sou Mika, bem-vindo ao meu mundo. Adoro construir websites e experiências digitais bonitos e atemporais com Framer.</p> <!-- SUA DESCRIÇÃO AQUI -->
-                    <div class="hero-actions">
-                        <a href="#" class="icon-button" aria-label="Twitter">X</a> <!-- SEUS LINKS REDES SOCIAIS AQUI -->
-                        <a href="#" class="icon-button" aria-label="YouTube">YT</a>
-                        <a href="#contato" class="button">Entrar em Contato</a> <!-- SEU BOTÃO DE CONTATO -->
+
+                    <div class="hero-visual card reveal-fade-up" data-delay="0.4">
+                        <!-- Representação Visual Simplificada -->
+                        <div class="visual-gradient-bg"></div>
+                        <div class="shooting-stars">
+                            <div class="star"></div>
+                            <div class="star"></div>
+                            <div class="star"></div>
+                        </div>
+                        <!-- ***** MUDE ISSO: Substitua por seu próprio elemento visual ou imagem principal ***** -->
+                        <img src="fotogabriel.png" alt= "Elemento visual abstrato" class="hero-visual-image reveal-image-up" data-delay="0.5">
+                        <div class="card-border"></div>
                     </div>
                 </div>
-                <div class="card-image">
-                     <!-- SUA IMAGEM PRINCIPAL (MEMOJI 1) AQUI -->
-                    <img src="fotogabriel.png" alt="Avatar Principal Mika">
-                    <!-- ESTRELAS CADENTES -->
-                    <span class="shooting-star"></span>
-                    <span class="shooting-star"></span>
-                    <span class="shooting-star"></span>
-                    <span class="shooting-star"></span>
+
+                <!-- Logo Ticker -->
+                <div class="logo-ticker-wrapper card reveal-fade-up" data-delay="0.5">
+                    <!-- ***** MUDE ISSO: Atualize o rótulo ou remova se não aplicável ***** -->
+                     <p class="ticker-label">Aprovado por grandes empresas</p>
+                    <div class="logo-ticker">
+                        <div class="ticker-track">
+                            <!-- ***** MUDE ESTES: Substitua por logos de clientes reais (idealmente SVGs). Mantenha duplicatas para o loop. ***** -->
+                            <!-- O JS abaixo gerará placeholders se o src estiver vazio -->
+                            <img src="" alt="Logo Cliente 1">
+                            <img src="" alt="Logo Cliente 2">
+                            <img src="" alt="Logo Cliente 3">
+                            <img src="" alt="Logo Cliente 4">
+                            <img src="" alt="Logo Cliente 5">
+                            <img src="" alt="Logo Cliente 1">
+                            <img src="" alt="Logo Cliente 2">
+                            <img src="" alt="Logo Cliente 3">
+                            <img src="" alt="Logo Cliente 4">
+                            <img src="" alt="Logo Cliente 5">
+                         </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- =============== Seção Trabalhou Com =============== -->
-    <section class="worked-with">
-        <div class="container">
-            <h3>Trabalhei com os melhores dos melhores</h3>
-            <div class="logos-container">
-                 <div class="logos-track">
-                      <!-- LOGOS CLIENTES AQUI (duplicados) -->
-                      <div class="logo-item"><img src="https://via.placeholder.com/100x40/ffffff/000000?text=Amsterdam" alt="Logo Amsterdam"></div>
-                      <div class="logo-item"><img src="https://via.placeholder.com/100x40/ffffff/000000?text=Theo" alt="Logo Theo"></div>
-                      <div class="logo-item"><img src="https://via.placeholder.com/100x40/ffffff/000000?text=Milano" alt="Logo Milano"></div>
-                      <div class="logo-item"><img src="https://via.placeholder.com/100x40/ffffff/000000?text=Luminous" alt="Logo Luminous"></div>
-                      <div class="logo-item"><img src="https://via.placeholder.com/100x40/ffffff/000000?text=Savannah" alt="Logo Savannah"></div>
-                      <div class="logo-item"><img src="https://via.placeholder.com/100x40/ffffff/000000?text=Amstel" alt="Logo Amstel"></div>
-                      <div class="logo-item"><img src="https://via.placeholder.com/100x40/ffffff/000000?text=Amsterdam" alt="Logo Amsterdam"></div>
-                      <div class="logo-item"><img src="https://via.placeholder.com/100x40/ffffff/000000?text=Theo" alt="Logo Theo"></div>
-                      <div class="logo-item"><img src="https://via.placeholder.com/100x40/ffffff/000000?text=Milano" alt="Logo Milano"></div>
-                      <div class="logo-item"><img src="https://via.placeholder.com/100x40/ffffff/000000?text=Luminous" alt="Logo Luminous"></div>
-                      <div class="logo-item"><img src="https://via.placeholder.com/100x40/ffffff/000000?text=Savannah" alt="Logo Savannah"></div>
-                      <div class="logo-item"><img src="https://via.placeholder.com/100x40/ffffff/000000?text=Amstel" alt="Logo Amstel"></div>
-                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- =============== Seção Diferencial =============== -->
-    <section id="diferencial">
-         <div class="container">
-             <div class="card">
-                 <div class="card-image">
-                     <!-- SUA IMAGEM (MEMOJI 2) AQUI -->
-                     <img src="https://via.placeholder.com/200x200/eee/000/?text=Memoji+2" alt="Avatar Diferencial Mika">
-                      <!-- ESTRELAS CADENTES -->
-                      <span class="shooting-star"></span>
-                      <span class="shooting-star"></span>
-                      <span class="shooting-star"></span>
-                      <span class="shooting-star"></span>
-                 </div>
-                 <div class="card-content">
-                     <h2>O que me torna <em>diferente</em>?</h2> <!-- SEU HEADLINE AQUI -->
-                     <p>Eu crio experiências digitais únicas adaptadas à sua marca e objetivos. Ao mesclar criatividade com funcionalidade e me manter à frente das tendências de design, garanto que cada projeto não apenas pareça impressionante, mas também funcione perfeitamente.</p> <!-- SUA DESCRIÇÃO AQUI -->
-                     <a href="#portfolio" class="button secondary">Ver Meu Trabalho</a> <!-- SEU BOTÃO -->
+        <!-- Seção Benefícios -->
+        <section class="benefit-section card reveal-fade-up" data-delay="0.6" id="benefit">
+             <div class="card-border"></div>
+             <!-- ***** MUDE ISSO: Substitua por uma imagem relevante aos seus diferenciais ***** -->
+             <img src="https://framerusercontent.com/images/PhspVOOUKBa2ChZJSmGD7TbgUiI.png" alt="Visual representando habilidades únicas" class="benefit-image reveal-image-up" data-delay="0.8">
+             <div class="benefit-content">
+                 <div class="container-narrow">
+                    <!-- ***** MUDE ISSO: Atualize a manchete sobre seu valor único ***** -->
+                    <h2 class="reveal-fade-up" data-delay="0.7">O que me torna <span class="serif-italic">diferente?</span></h2>
+                    <!-- ***** MUDE ISSO: Atualize o parágrafo explicando seu valor único ***** -->
+                    <p class="reveal-fade-up" data-delay="0.8">Crio experiências digitais únicas, adaptadas à sua marca e objetivos. Ao mesclar criatividade com funcionalidade e me manter à frente das tendências de design, garanto que cada projeto não só pareça incrível, mas também funcione perfeitamente.</p>
+                    <a href="#work" class="btn btn-secondary btn-small reveal-fade-up" data-delay="0.9">
+                        Ver Meus Trabalhos <i class="fas fa-arrow-right"></i>
+                    </a>
                  </div>
              </div>
-         </div>
-    </section>
+        </section>
 
-    <!-- =============== Seção Portfolio =============== -->
-    <section id="portfolio">
-        <div class="container">
-            <div class="portfolio-grid">
-                <!-- Projeto 1 -->
-                <a href="#" class="project-card"> <div class="project-image"><img src="https://via.placeholder.com/600x400/ff0000/ffffff?text=Projeto+Conversão" alt="Projeto Conversão"></div> <div class="project-info"><h3>Conversão</h3><p>Website para uma agência de marketing digital e anúncios pagos.</p></div> </a>
-                <!-- Projeto 2 -->
-                 <a href="#" class="project-card"> <div class="project-image"><img src="https://via.placeholder.com/600x400/800080/ffffff?text=Projeto+Scalable" alt="Projeto Scalable"></div> <div class="project-info"><h3>Scalable</h3><p>Landing Page para um negócio SaaS de análise e vendas.</p></div> </a>
-                <!-- Projeto 3 -->
-                 <a href="#" class="project-card"> <div class="project-image"><img src="https://via.placeholder.com/600x400/4b0082/ffffff?text=Projeto+Limitless" alt="Projeto Limitless"></div> <div class="project-info"><h3>Limitless</h3><p>Landing page para um serviço de assinatura de design.</p></div> </a>
-                <!-- Projeto 4 -->
-                 <a href="#" class="project-card"> <div class="project-image"><img src="https://via.placeholder.com/600x400/00008b/ffffff?text=Projeto+Solopreneur" alt="Projeto Solopreneur"></div> <div class="project-info"><h3>Solopreneur</h3><p>Website para um web designer freelancer e criador digital.</p></div> </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- =============== Seção Como Posso Ajudar =============== -->
-    <section id="ajuda">
-        <div class="container">
-            <div class="card">
-                 <div class="card-content">
-                     <div style="flex: 2;">
-                         <h2>Como posso ajudar <em>você</em>?</h2> <!-- SEU HEADLINE AQUI -->
-                         <div style="display: flex; gap: 30px; margin-bottom: 30px;">
-                              <!-- Oferta Serviço 1 -->
-                              <div class="service-offering"> <h3>Landing Page em Framer <span class="price">A partir de $1,999</span></h3> <p>Quer que eu construa para você uma landing page totalmente personalizada, bonita e de alta conversão?</p> </div>
-                              <!-- Oferta Serviço 2 -->
-                              <div class="service-offering"> <h3>Website em Framer <span class="price">A partir de $3,999</span></h3> <p>Quer que eu construa para você um website multi-páginas totalmente personalizado e visualmente impressionante?</p> </div>
+        <!-- Seção Trabalhos (Work) -->
+        <section class="work-section container reveal-fade-up" data-delay="0.7" id="work">
+            <div class="project-grid">
+                <!-- ***** MUDE ESTE PROJETO ***** -->
+                <a href="link-seu-projeto-1.html" target="_blank" rel="noopener" class="project-card card">
+                    <!-- ***** MUDE ISSO: Imagem do Projeto ***** -->
+                    <img src="https://framerusercontent.com/images/VOo008v7SH5lMNywd2aX2N481gQ.jpg" alt="Captura de Tela Projeto 1" class="project-image">
+                     <div class="card-border"></div>
+                    <div class="project-info">
+                        <div class="project-title-row">
+                            <!-- ***** MUDE ISSO: Título do Projeto ***** -->
+                            <h3>Título do Projeto 1</h3>
+                            <span class="arrow-icon"><i class="fas fa-arrow-right"></i></span>
+                        </div>
+                        <!-- ***** MUDE ISSO: Descrição do Projeto ***** -->
+                        <p>Breve descrição do projeto e do cliente ou objetivo.</p>
+                    </div>
+                </a>
+                 <!-- ***** MUDE ESTE PROJETO ***** -->
+                <a href="link-seu-projeto-2.html" target="_blank" rel="noopener" class="project-card card">
+                     <!-- ***** MUDE ISSO: Imagem do Projeto ***** -->
+                    <img src="https://framerusercontent.com/images/R0adRWHLY0PEKBrpfSMVR9KgA.jpg" alt="Captura de Tela Projeto 2" class="project-image">
+                     <div class="card-border"></div>
+                    <div class="project-info">
+                         <div class="project-title-row">
+                             <!-- ***** MUDE ISSO: Título do Projeto ***** -->
+                             <h3>Título do Projeto 2</h3>
+                             <span class="arrow-icon"><i class="fas fa-arrow-right"></i></span>
                          </div>
-                          <div class="get-in-touch-section"> <a href="#contato" class="button">Entrar em Contato</a> </div>
-                     </div>
-                 </div>
-                 <div class="card-image">
-                     <!-- SUA IMAGEM (MEMOJI 3 ou 1) AQUI -->
-                     <img src="https://via.placeholder.com/200x200/eee/000/?text=Memoji+1" alt="Avatar Contato Mika">
-                      <!-- ESTRELAS CADENTES -->
-                      <span class="shooting-star"></span>
-                      <span class="shooting-star"></span>
-                      <span class="shooting-star"></span>
-                      <span class="shooting-star"></span>
-                 </div>
+                         <!-- ***** MUDE ISSO: Descrição do Projeto ***** -->
+                        <p>Breve descrição do projeto e do cliente ou objetivo.</p>
+                    </div>
+                </a>
+                 <!-- ***** MUDE ESTE PROJETO ***** -->
+                <a href="link-seu-projeto-3.html" target="_blank" rel="noopener" class="project-card card">
+                     <!-- ***** MUDE ISSO: Imagem do Projeto ***** -->
+                    <img src="https://framerusercontent.com/images/IaA3MCPa8fujwB8UpCHS9cJyhH4.jpg" alt="Captura de Tela Projeto 3" class="project-image">
+                     <div class="card-border"></div>
+                    <div class="project-info">
+                         <div class="project-title-row">
+                             <!-- ***** MUDE ISSO: Título do Projeto ***** -->
+                             <h3>Título do Projeto 3</h3>
+                             <span class="arrow-icon"><i class="fas fa-arrow-right"></i></span>
+                         </div>
+                         <!-- ***** MUDE ISSO: Descrição do Projeto ***** -->
+                        <p>Breve descrição do projeto e do cliente ou objetivo.</p>
+                    </div>
+                </a>
+                 <!-- ***** MUDE ESTE PROJETO ***** -->
+                <a href="link-seu-projeto-4.html" target="_blank" rel="noopener" class="project-card card">
+                     <!-- ***** MUDE ISSO: Imagem do Projeto ***** -->
+                    <img src="https://framerusercontent.com/images/vSJG9AAIGnYCJ7uwJZUrVzsaE.jpg" alt="Captura de Tela Projeto 4" class="project-image">
+                     <div class="card-border"></div>
+                    <div class="project-info">
+                        <div class="project-title-row">
+                             <!-- ***** MUDE ISSO: Título do Projeto ***** -->
+                             <h3>Título do Projeto 4</h3>
+                             <span class="arrow-icon"><i class="fas fa-arrow-right"></i></span>
+                         </div>
+                         <!-- ***** MUDE ISSO: Descrição do Projeto ***** -->
+                        <p>Breve descrição do projeto e do cliente ou objetivo.</p>
+                    </div>
+                </a>
+                <!-- Adicione mais project-cards conforme necessário -->
             </div>
+        </section>
+
+        <!-- Seção Serviços -->
+        <section class="services-section card reveal-fade-up" data-delay="0.6" id="services">
+             <div class="card-border"></div>
+             <!-- ***** MUDE ISSO: Substitua por uma imagem relevante aos seus serviços ***** -->
+             <img src="https://framerusercontent.com/images/CNO7GhjGaTQY3LVC6xpHVbtSo.png" alt="Visual representando serviços" class="services-image reveal-image-up" data-delay="0.8">
+             <div class="services-content">
+                 <div class="container-narrow">
+                    <!-- ***** MUDE ISSO: Atualize a manchete sobre seus serviços ***** -->
+                    <h2 class="reveal-fade-up" data-delay="0.7">Como posso <span class="serif-italic">ajudar?</span></h2>
+                    <div class="service-items">
+                         <!-- ***** MUDE ESTE SERVIÇO ***** -->
+                         <div class="service-item reveal-fade-up" data-delay="0.8">
+                            <div class="service-item-header">
+                                <!-- ***** MUDE ISSO: Título do Serviço ***** -->
+                                <h4>Design de Website Personalizado</h4>
+                                <!-- ***** MUDE ISSO: Preço/Faixa do Serviço (Opcional) ***** -->
+                                <span class="badge">A partir de R$ X.XXX</span> <!-- Ajuste moeda e valor -->
+                            </div>
+                             <!-- ***** MUDE ISSO: Descrição do Serviço ***** -->
+                             <p>Descrição da sua primeira oferta de serviço, focando nos benefícios.</p>
+                         </div>
+                         <!-- ***** MUDE ESTE SERVIÇO ***** -->
+                         <div class="service-item reveal-fade-up" data-delay="0.9">
+                             <div class="service-item-header">
+                                 <!-- ***** MUDE ISSO: Título do Serviço ***** -->
+                                 <h4>Otimização de Landing Page</h4>
+                                 <!-- ***** MUDE ISSO: Preço/Faixa do Serviço (Opcional) ***** -->
+                                 <span class="badge">A partir de R$ Y.YYY</span> <!-- Ajuste moeda e valor -->
+                             </div>
+                             <!-- ***** MUDE ISSO: Descrição do Serviço ***** -->
+                             <p>Descrição da sua segunda oferta de serviço, focando nos benefícios.</p>
+                         </div>
+                         <!-- Adicione mais itens de serviço se necessário -->
+                    </div>
+                     <button class="btn btn-secondary btn-small contact-trigger reveal-fade-up" data-delay="1.0">
+                        Entrar em Contato <i class="fas fa-arrow-right"></i>
+                    </button>
+                 </div>
+             </div>
+        </section>
+
+        <!-- Rodapé -->
+        <footer class="footer-section container reveal-fade-up" data-delay="0.8">
+            <div class="footer-content">
+                 <!-- ***** MUDE ISSO: Atualize ou simplifique seu logo/nome no rodapé ***** -->
+                <div class="footer-logo">[Seu<span class="logo-highlight">Nome]</span></div>
+                <div class="footer-time">
+                    <span id="local-time"></span>
+                    <!-- ***** MUDE ISSO: Atualize sua localização ***** -->
+                    <p class="time-zone">Hora local em [Sua Cidade, Seu País]</p>
+                </div>
+                <div class="socials">
+                     <!-- ***** MUDE ISSO: Atualize seus links de redes sociais ***** -->
+                    <a href="https://twitter.com/seu_perfil" target="_blank" rel="noopener" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://linkedin.com/in/seu_perfil" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <!-- Adicione mais links sociais conforme necessário -->
+                </div>
+            </div>
+            <div class="footer-credits">
+                 <!-- Créditos Simplificados -->
+                 <p>© <span id="footer-year"></span> [Seu Nome]. Todos os direitos reservados.</p>
+                 <!-- Você pode adicionar um link para política de privacidade ou termos, se necessário -->
+                 <!-- Exemplo: <span>•</span> <a href="/privacidade">Política de Privacidade</a> -->
+            </div>
+        </footer>
+
+    </div> <!-- /.main-container -->
+
+    <!-- Botão Flutuante (FAB) Removido -->
+
+    <!-- Modal de Contato Popup -->
+    <div class="modal-overlay" id="contact-modal-overlay">
+        <div class="modal-content card" id="contact-modal">
+             <button class="modal-close" id="modal-close-btn" aria-label="Fechar modal">×</button>
+             <!-- ***** MUDE ISSO (Opcional): Substitua a imagem do modal ***** -->
+             <img src="https://framerusercontent.com/images/PhspVOOUKBa2ChZJSmGD7TbgUiI.png" alt="Elemento visual de contato" class="modal-image">
+            <h2>Entrar em Contato</h2>
+            <p>Preencha o formulário abaixo e retornarei o mais breve possível.</p>
+            <!-- ***** MUDE ISSO: Atualize o 'action' do formulário para seu endpoint de backend ou serviço (como Formspree, Netlify Forms, etc.) ***** -->
+            <form action="#" method="POST" class="contact-form">
+                 <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Nome</label>
+                        <input type="text" id="name" name="name" placeholder="Seu Nome" required>
+                    </div>
+                     <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Seu Email" required>
+                    </div>
+                 </div>
+                 <div class="form-group">
+                     <label for="subject">Assunto</label>
+                     <input type="text" id="subject" name="subject" placeholder="Sobre o que é?">
+                 </div>
+                 <div class="form-group">
+                     <label for="budget">Orçamento (Opcional)</label>
+                     <input type="text" id="budget" name="budget" placeholder="Ex: R$1000 - R$2000">
+                 </div>
+                 <div class="form-group">
+                     <label for="message">Mensagem</label>
+                     <textarea id="message" name="message" rows="4" placeholder="Conte-me sobre seu projeto..." required></textarea>
+                 </div>
+                 <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+            </form>
         </div>
-    </section>
+    </div>
 
-     <!-- =============== Rodapé =============== -->
-     <footer id="contato">
-         <div class="container">
-             <div class="footer-info">
-                 <div class="footer-title">Clientela</div> <div id="local-time">Carregando data e hora...</div> <div class="location">Horário local em Sua Cidade, Seu País</div>
-             </div>
-             <div class="footer-social-links">
-                 <a href="#" class="icon-button" aria-label="Twitter">X</a> <a href="#" class="icon-button" aria-label="YouTube">YT</a>
-             </div>
-             <div class="footer-credits">
-                 <a href="#">Usar Template</a> <span>•</span> <span>Feito com Orgulho em Framer</span> <span>•</span> <span>Criado por Seu Nome</span>
-             </div>
-         </div>
-     </footer>
-
+    <!-- JavaScript Embutido -->
     <script>
-        // === JavaScript para Hora Dinâmica ===
-        function updateTime() {
-            const timeElement = document.getElementById('local-time');
-            if (timeElement) {
-                const now = new Date();
-                const dateOptions = { month: 'long', day: 'numeric', year: 'numeric' };
-                let formattedDate = now.toLocaleDateString('pt-BR', dateOptions);
-                formattedDate = formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
-                const timeOptions = { hour: '2-digit', minute: '2-digit', hour12: false };
-                const formattedTime = now.toLocaleTimeString('pt-BR', timeOptions);
-                timeElement.textContent = `${formattedDate} - ${formattedTime}`;
-            }
-        }
-        updateTime(); setInterval(updateTime, 60000);
-    </script>
+        document.addEventListener('DOMContentLoaded', () => {
 
+            // --- Rolagem Suave para Links Âncora ---
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const hrefAttribute = this.getAttribute('href');
+                    // Verifica se é apenas uma hash, não hash mais outra coisa
+                    if (hrefAttribute.length > 1 && hrefAttribute.startsWith('#')) {
+                        const targetElement = document.querySelector(hrefAttribute);
+                        if (targetElement) {
+                            e.preventDefault();
+                            targetElement.scrollIntoView({
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+
+            // --- Atualização da Hora Local ---
+            const timeElement = document.getElementById('local-time');
+            function updateTime() {
+                if (timeElement) {
+                    const now = new Date();
+                    // ***** MUDE ISSO: Atualize 'Europe/London' para seu fuso horário real se desejado, ou deixe indefinido para a hora local do usuário *****
+                    // Lista de fusos horários: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+                    const timeZone = 'America/Sao_Paulo'; // Exemplo: Mude isso para seu fuso
+                    const options = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }; // Use hour12: false para formato 24h comum no Brasil
+                    try {
+                        // Tenta mostrar o fuso horário específico
+                        timeElement.textContent = now.toLocaleTimeString('pt-BR', { ...options, timeZone: timeZone });
+                    } catch (error) {
+                        // Fallback para a hora local do usuário se o fuso horário não for bem suportado
+                        console.warn("Navegador não suporta totalmente a opção timeZone ou fuso inválido especificado, mostrando hora local.");
+                        timeElement.textContent = now.toLocaleTimeString('pt-BR', options); // Usa pt-BR para formato local
+                    }
+                }
+            }
+            if (timeElement) {
+                updateTime();
+                setInterval(updateTime, 1000); // Atualiza a cada segundo
+            }
+
+             // --- Ano no Rodapé ---
+            const yearElement = document.getElementById('footer-year');
+            if(yearElement) {
+                yearElement.textContent = new Date().getFullYear();
+            }
+
+            // --- Manipulação do Modal ---
+            const modalOverlay = document.getElementById('contact-modal-overlay');
+            const modal = document.getElementById('contact-modal');
+            const closeModalBtn = document.getElementById('modal-close-btn');
+            const contactTriggers = document.querySelectorAll('.contact-trigger');
+
+            function openModal() {
+                if (modalOverlay) modalOverlay.classList.add('visible');
+            }
+
+            function closeModal() {
+                if (modalOverlay) modalOverlay.classList.remove('visible');
+            }
+
+            contactTriggers.forEach(trigger => {
+                trigger.addEventListener('click', openModal);
+            });
+
+            if (closeModalBtn) {
+                closeModalBtn.addEventListener('click', closeModal);
+            }
+
+            if (modalOverlay) {
+                // Fecha o modal se clicar na sobreposição (overlay), mas não no conteúdo do modal
+                modalOverlay.addEventListener('click', (event) => {
+                    if (event.target === modalOverlay) {
+                        closeModal();
+                    }
+                });
+            }
+
+            // Fecha o modal ao pressionar a tecla Escape
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && modalOverlay && modalOverlay.classList.contains('visible')) {
+                    closeModal();
+                }
+            });
+
+            // --- Animação Simples de Aparecimento ao Rolar ---
+            const revealElements = document.querySelectorAll('.reveal-fade-up, .reveal-image-up');
+
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const delay = entry.target.dataset.delay || 0;
+                            setTimeout(() => {
+                                entry.target.classList.add('is-visible');
+                            }, delay * 1000);
+                            observer.unobserve(entry.target); // Para de observar uma vez visível
+                        }
+                    });
+                }, {
+                    threshold: 0.1 // Aciona quando 10% do elemento está visível
+                });
+
+                revealElements.forEach(el => {
+                    observer.observe(el);
+                });
+            } else {
+                // Fallback para navegadores antigos: apenas mostra os elementos imediatamente
+                revealElements.forEach(el => el.classList.add('is-visible'));
+            }
+
+            // --- Adiciona SVGs de Placeholder para o Logo Ticker (Se você não substituir os atributos src das <img>) ---
+            const tickerTrack = document.querySelector('.ticker-track');
+            if (tickerTrack) {
+                const placeholderLogos = tickerTrack.querySelectorAll('img');
+                placeholderLogos.forEach((img, index) => {
+                    // Só gera placeholder se src estiver faltando ou for apenas a URL base
+                    if (!img.getAttribute('src') || img.getAttribute('src') === '' || img.getAttribute('src') === window.location.href) {
+                        const width = [124, 146, 83, 95, 113][index % 5]; // Larguras exemplo
+                        const height = [16, 17, 20, 25, 23][index % 5]; // Alturas exemplo
+                        img.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='${width}' height='${height}' viewBox='0 0 ${width} ${height}'%3E%3Crect width='${width}' height='${height}' fill='%23333'/%3E%3Ctext x='50%25' y='50%25' fill='%23888' font-size='10' text-anchor='middle' dominant-baseline='middle'%3ELogo Cliente ${index % 5 + 1}%3C/text%3E%3C/svg%3E`;
+                        img.style.height = `${height}px`; // Define a altura explicitamente se necessário
+                        img.alt = `Logo Placeholder Cliente ${index % 5 + 1}`;
+                    }
+                });
+            }
+
+
+        });
+    </script>
 </body>
 </html>
